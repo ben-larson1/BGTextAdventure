@@ -1,9 +1,22 @@
+import java.io.*;
+import java.util.Scanner;
+
+/*
+ * Ben Larson
+ * 5/4/2017
+ * BG Text Adventure Game
+ */
 
 public class game {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		initialize(); 
+		Scanner input = new Scanner(System.in);
+		
+	}
+	
+	public static void initialize() {
+		
 	}
 
 }
