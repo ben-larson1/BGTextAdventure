@@ -8,12 +8,14 @@ public class Map {
 		x = xVal;
 		y = yVal;
 		mapType = "default";
+		generateMap();
 	}
 	
 	public Map(int xVal, int yVal, String type) {
 		x = xVal;
 		y = yVal;
 		mapType = type;
+		generateMap();
 	}
 	
 	public int getX() { return x; }
@@ -30,5 +32,13 @@ public class Map {
 		case "TownMap": //if it is a town map
 			System.out.println("Try leaving the town through the gate");
 		}
+	}
+	
+	public void generateMap() {
+		grid = new int[y][x];
+	}
+	
+	public void generateInitialMap() {
+		grid = new int[y][x];
 	}
 }
