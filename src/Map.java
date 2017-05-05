@@ -1,4 +1,34 @@
 
 public class Map {
-
+	private int x, y;
+	private int[][] grid;
+	private String mapType;
+	
+	public Map(int xVal, int yVal) {
+		x = xVal;
+		y = yVal;
+		mapType = "default";
+	}
+	
+	public Map(int xVal, int yVal, String type) {
+		x = xVal;
+		y = yVal;
+		mapType = type;
+	}
+	
+	public int getX() { return x; }
+	public int getY() { return y; }
+	
+	public void borderWarning() { //triggers when the player tries to go beyond the map boundaries
+		switch(mapType) {
+		case "default": //if it is the generic map
+			System.out.println("Its too treacharous to continue on this path, maybe I should turn around...");
+			break;
+		case "BuildingMap": //if it is a building map
+			System.out.println("Watch out for the wall");
+			break;
+		case "TownMap": //if it is a town map
+			System.out.println("Try leaving the town through the gate");
+		}
+	}
 }

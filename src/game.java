@@ -16,7 +16,8 @@ public class game {
 	}
 	
 	public static void initialize() {
-		Map m = new Map();
+		Map m = new Map(10,10);
+		m.borderWarning();
 	}
 
 }
