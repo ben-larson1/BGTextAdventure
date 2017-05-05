@@ -16,7 +16,7 @@ public class game {
 	}
 	
 	public static void initialize() {
-		
+		Map m = new Map();
 	}
 
 }
