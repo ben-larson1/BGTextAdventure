@@ -1,4 +1,4 @@
 
-public class Field extends Tile{
+public class Field extends Tile implements Clusterable{
 
 }

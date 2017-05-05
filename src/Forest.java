@@ -1,4 +1,4 @@
 
-public class Forest extends Tile{
+public class Forest extends Tile implements Clusterable{
 
 }

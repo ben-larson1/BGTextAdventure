@@ -1,4 +1,4 @@
 
-public class Mountain extends Tile {
+public class Mountain extends Tile implements Clusterable{
 
 }

@@ -1,8 +1,10 @@
+import java.util.Random;
 
 public class Map {
 	private int x, y;
 	private int[][] grid;
 	private String mapType;
+	private Random r = new Random();
 	
 	public Map(int xVal, int yVal) {
 		x = xVal;
@@ -40,5 +42,11 @@ public class Map {
 	
 	public void generateInitialMap() {
 		grid = new int[y][x];
+		int type = r.nextInt(0); //the parameter should be the amt of 'Clusterable' Tiles
+		
+	}
+	
+	public void generateCluster(Tile t) {
+		
 	}
 }

@@ -1,4 +1,4 @@
 
-public class Swamp extends Tile {
+public class Swamp extends Tile implements Clusterable {
 
 }
