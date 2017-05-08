@@ -11,6 +11,10 @@ public class Swamp extends Tile implements Clusterable {
 		}
 	}
 	
+	public Swamp() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void Cluster(int size) {
 		
 	}

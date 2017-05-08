@@ -11,6 +11,10 @@ public class Mountain extends Tile implements Clusterable{
 		}
 	}
 	
+	public Mountain() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void Cluster(int size) {
 		
 	}

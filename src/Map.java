@@ -38,13 +38,19 @@ public class Map {
 	
 	public void generateMap() {
 		grid = new int[y][x];
+		for(int i = 0; i < y; i++) {
+			for(int j = 0; j < x; j++) {
+				
+			}
+		}
 	}
 	
 	public void generateInitialMap() {
 		grid = new int[y][x];
-		int type = r.nextInt(0); //the parameter should be the amt of 'Clusterable' Tiles
+		
 		
 	}
+	
 	
 	public void generateCluster(Tile t) {
 		

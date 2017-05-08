@@ -11,6 +11,10 @@ public class Forest extends Tile implements Clusterable{
 		}
 	}
 	
+	public Forest() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void Cluster(int size) {
 		
 	}

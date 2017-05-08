@@ -11,6 +11,10 @@ public class Field extends Tile implements Clusterable{
 		}
 	}
 	
+	public Field() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void Cluster(int size) {
 		
 	}
