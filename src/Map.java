@@ -38,8 +38,8 @@ public class Map {
 	
 	public void generateMap() {
 		grid = new int[y][x];
-		for(int i = 0; i < y; i++) {
-			for(int j = 0; j < x; j++) {
+		for(int i = 0; i < y; i++) { //i represents y
+			for(int j = 0; j < x; j++) {//j represents x
 				
 			}
 		}
@@ -47,7 +47,11 @@ public class Map {
 	
 	public void generateInitialMap() {
 		grid = new int[y][x];
-		
+		for(int i = 0; i < y; i++) { //i represents y
+			for(int j = 0; j < x; j++) {//j represents x
+				
+			}
+		}
 		
 	}
 	
