@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Map {
 	private int x, y;
-	private int[][] grid;
+	private Tile[][] grid;
 	private String mapType;
 	private Random r = new Random();
 	
@@ -17,7 +17,6 @@ public class Map {
 		x = xVal;
 		y = yVal;
 		mapType = type;
-		generateMap();
 	}
 	
 	public int getX() { return x; }
@@ -37,7 +36,12 @@ public class Map {
 	}
 	
 	public void generateMap() {
-		grid = new int[y][x];
+		grid = new Tile[y][x];
+		for(int i = 0; i < y; i++) { //i represents y
+			for(int j = 0; j < x; j++) {//j represents x
+				grid[y][x] = null;
+			}
+		}
 		for(int i = 0; i < y; i++) { //i represents y
 			for(int j = 0; j < x; j++) {//j represents x
 				
@@ -45,16 +49,47 @@ public class Map {
 		}
 	}
 	
+	
 	public void generateInitialMap() {
-		grid = new int[y][x];
+		grid = new Tile[y][x];
 		for(int i = 0; i < y; i++) { //i represents y
 			for(int j = 0; j < x; j++) {//j represents x
+				grid[y][x] = null;
+			}
+		}
+		for(int i = 0; i < y; i++) { //i represents y
+			for(int j = 0; j < x; j++) {//j represents x
+				generateTile(y, x, 3);
 				
 			}
 		}
 		
 	}
 	
+	/**
+	 * loc should be 1 if tile is inside, 2 if its in a town, 3 if its outside
+	 * @param y
+	 * @param x
+	 * @param loc
+	 */
+	public void generateTile(int y, int x, int loc) {
+		Random r = new Random();
+		if(loc == 1) { //if the Tile is deemed to be inside
+			grid[y][x] = new Room();
+		} else if(loc == 2) { //if the Tile is deemed to be in a town
+			//----------------------------------TO-BE-IMPLEMENTED----------------------------
+		} else if(loc == 3) {
+			int selection = r.nextInt(5);
+			if(selection == 0) {
+				boolean checkForCluster = r.nextBoolean();
+				int size = r.nextInt(4);
+				grid[y][x] = new Field(checkForCluster,size);
+				if(checkForCluster){
+					
+				}
+			}
+		}
+	}
 	
 	public void generateCluster(Tile t) {
 		

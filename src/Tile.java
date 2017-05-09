@@ -2,6 +2,7 @@
 public class Tile {
 	boolean needsAnotherMap = false;
 	Map tileMap;
+	boolean isLoaded = false;
 	public Tile() {
 		
 	}
