@@ -11,5 +11,10 @@ public class Tile {
 		tileMap = m;
 	}
 	
+	public String toString() {
+		String retVal = this.getClass().toString();
+		return retVal.substring(6);
+	}
+	
 	
 }

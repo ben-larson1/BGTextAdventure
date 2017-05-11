@@ -39,7 +39,7 @@ public class Map {
 		grid = new Tile[y][x];
 		for(int i = 0; i < y; i++) { //i represents y
 			for(int j = 0; j < x; j++) {//j represents x
-				grid[y][x] = null;
+				grid[i][j] = null;
 			}
 		}
 		for(int i = 0; i < y; i++) { //i represents y
@@ -54,12 +54,17 @@ public class Map {
 		grid = new Tile[y][x];
 		for(int i = 0; i < y; i++) { //i represents y
 			for(int j = 0; j < x; j++) {//j represents x
-				grid[y][x] = null;
+				grid[i][j] = null;
 			}
 		}
 		for(int i = 0; i < y; i++) { //i represents y
 			for(int j = 0; j < x; j++) {//j represents x
-				generateTile(y, x, 3);
+				Random r = new Random();
+				int sendVal = 3;
+				if(r.nextInt(20) == 1) {
+					sendVal = 2;
+				}
+				generateTile(i, j, sendVal);
 				
 			}
 		}
@@ -72,28 +77,79 @@ public class Map {
 	 * @param x
 	 * @param loc
 	 */
-	public void generateTile(int y, int x, int loc) {
+	public void generateTile(int _y, int _x, int loc) {
 		Random r = new Random();
 		if(loc == 1) { //if the Tile is deemed to be inside
-			grid[y][x] = new Room();
+			grid[_y][_x] = new Room();
 		} else if(loc == 2) { //if the Tile is deemed to be in a town
-			//----------------------------------TO-BE-IMPLEMENTED----------------------------
+			grid[_y][_x] = new Town();
 		} else if(loc == 3) {
-			int selection = r.nextInt(5);
+			int selection = r.nextInt(4); //0 = Field, 1 = Forest, 2 = Mountain, 3 = Swamp
 			if(selection == 0) {
 				boolean checkForCluster = r.nextBoolean();
 				int size = r.nextInt(4);
-				grid[y][x] = new Field(checkForCluster,size);
+				grid[_y][_x] = new Field(size);
 				if(checkForCluster){
-					generateCluster(selection);
+					generateCluster(selection, _x, _y);
 				}
-			}
+			} else if(selection == 1) {
+				boolean checkForCluster = r.nextBoolean();
+				int size = r.nextInt(4);
+				grid[_y][_x] = new Forest(size);
+				if(checkForCluster) {
+					generateCluster(selection, _x, _y);
+				}
+			} else if(selection == 2) {
+				boolean checkForCluster = r.nextBoolean();
+				int size = r.nextInt(4);
+				grid[_y][_x] = new Mountain(size);
+				if(checkForCluster) {
+					generateCluster(selection, _x, _y);
+				}
+			} else if(selection == 3) {
+				boolean checkForCluster = r.nextBoolean();
+				int size = r.nextInt(4);
+				grid[_y][_x] = new Swamp(size);
+				if(checkForCluster) {
+					generateCluster(selection, _x, _y);
+				}
+			} 
 		}
 	}
 	
-	public void generateCluster(int type) {
+	/** This method generates a cluster of Tiles that are Clusterable
+	 * 		 type: input a number that is the SubClass of Tile (0 = Field, 1 = Forest, 2 = Mountain, 3 = Swamp)
+	 */
+	public void generateCluster(int type, int _x, int _y) {
 		if(type == 0) {
-			
+			grid = ((Field)grid[_y][_x]).Cluster(grid, _x, _y);
+		} else if(type == 1) {
+			grid = ((Forest)grid[_y][_x]).Cluster(grid, _x, _y);
+		} else if(type == 2) {
+			grid = ((Mountain)grid[_y][_x]).Cluster(grid, _x, _y);
+		} else if(type == 3) {
+			grid = ((Swamp)grid[_y][_x]).Cluster(grid, _x, _y);
 		}
+	}
+	
+	public String toString() {
+		String retVal = "";
+		for(int i = 0; i < grid.length; i++) {
+			for(int j = 0; j < grid[0].length; j++) {
+				retVal += "\t";
+				if(grid[i][j] == null) {
+					retVal += "null\t";
+				} else {
+					
+					retVal += grid[i][j].toString();
+					if(grid[i][j].toString().length() < 8) {
+						retVal += "\t";
+					}
+				}
+			
+			}
+			retVal += "\n\n";
+		}
+		return retVal;
 	}
 }
