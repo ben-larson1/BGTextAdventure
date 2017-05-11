@@ -85,13 +85,15 @@ public class Map {
 				int size = r.nextInt(4);
 				grid[y][x] = new Field(checkForCluster,size);
 				if(checkForCluster){
-					
+					generateCluster(selection);
 				}
 			}
 		}
 	}
 	
-	public void generateCluster(Tile t) {
-		
+	public void generateCluster(int type) {
+		if(type == 0) {
+			
+		}
 	}
 }
