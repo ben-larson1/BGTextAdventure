@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 /*
  * Ben Larson
@@ -9,17 +9,40 @@ import java.util.Scanner;
 
 public class game {
 	private static Map m = new Map(10,10);
+	private static Player player;
+	private static Scanner input = new Scanner(System.in);
+	public static boolean endVal = true;
 	
 	public static void main(String[] args) {
 		initialize(); 
-		Scanner input = new Scanner(System.in);
 		System.out.println(m.toString());
+		while(endVal) {
+			String cmd = input.nextLine();
+			command(cmd);
+		}
 	}
 	
-	public static void initialize() {
-//		Map m = new Map(10,10);
+	public static void initialize() { //initializes the game
+		System.out.println("Please enter your name...");
+		String inputName = input.nextLine();
+		player = new Player(inputName);
+		System.out.println("Hello " + player.getName() + ", welcome to Ager");//name is a work in progress
 		m.generateInitialMap();
-		m.borderWarning();
+		player.addToInventory(new ItemData("Map"));
+	}
+	
+	public static void command(String cmd) {
+		switch(cmd.split(" ")[0]) {
+		case "inventory":
+			p(player.getInventory());
+			break;
+		case "exit":
+			endVal = false;
+		}
+	}
+	
+	public static void p(Object e) {
+		System.out.println(e);
 	}
 
 }
