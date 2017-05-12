@@ -8,7 +8,7 @@ import java.util.*;
  */
 
 public class game {
-	private static Map m = new Map(10,10);
+	private static Map m = new Map(10, 10);
 	private static Player player;
 	private static Scanner input = new Scanner(System.in);
 	public static boolean endVal = true;
@@ -26,7 +26,7 @@ public class game {
 		System.out.println("Please enter your name...");
 		String inputName = input.nextLine();
 		player = new Player(inputName);
-		System.out.println("Hello " + player.getName() + ", welcome to Ager");//name is a work in progress
+		System.out.println("Hello " + player.getName() + ", welcome to Canadia");//name is a work in progress
 		m.generateInitialMap();
 		player.addToInventory(new ItemData("Map"));
 	}
@@ -38,8 +38,14 @@ public class game {
 			break;
 		case "exit":
 			endVal = false;
+			 break;
+		case "go":
+			m.moveTo(cmd.split(" ")[1]);
+			break;
+		case "use":
 		}
 	}
+	
 	
 	public static void p(Object e) {
 		System.out.println(e);

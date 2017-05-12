@@ -2,6 +2,7 @@ import java.util.Random;
 
 public class Map {
 	private int x, y;
+	private int currX,currY;
 	private Tile[][] grid;
 	private String mapType;
 	private Random r = new Random();
@@ -71,6 +72,7 @@ public class Map {
 		
 	}
 	
+	
 	/**
 	 * loc should be 1 if tile is inside, 2 if its in a town, 3 if its outside
 	 * @param y
@@ -133,6 +135,7 @@ public class Map {
 	}
 	
 	public String toString() {
+
 		String retVal = "";
 		for(int i = 0; i < grid.length; i++) {
 			for(int j = 0; j < grid[0].length; j++) {
@@ -151,5 +154,21 @@ public class Map {
 			retVal += "\n\n";
 		}
 		return retVal;
+	}
+
+	public void moveTo(String dir) {
+		if(dir.equalsIgnoreCase("n") || dir.equalsIgnoreCase("north")){
+			if(currX <= 0) {
+				borderWarning();
+				return;
+			}
+			currX--;
+		} else if (dir.equals("s") || dir.equalsIgnoreCase("south")) {
+			
+		}
+	}
+	
+	public Tile currLoc() {
+		return null;
 	}
 }

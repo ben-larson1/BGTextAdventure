@@ -1,8 +1,10 @@
 
 public class Tile {
-	boolean needsAnotherMap = false;
-	Map tileMap;
-	boolean isLoaded = false;
+	private boolean needsAnotherMap = false;
+	private Map tileMap;
+	public boolean isLoaded = false;
+	
+	
 	public Tile() {
 		
 	}
@@ -12,9 +14,10 @@ public class Tile {
 	}
 	
 	public String toString() {
-		String retVal = this.getClass().toString();
-		return retVal.substring(6);
+		String retVal = this.getClass().toString().substring(6);
+		return retVal;
 	}
+	
 	
 	
 }
