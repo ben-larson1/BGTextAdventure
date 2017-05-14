@@ -31,8 +31,9 @@ public class game {
 		player.addToInventory(new ItemData("Map"));
 	}
 	
-	public static void command(String cmd) {
-		switch(cmd.split(" ")[0]) {
+	public static void command(String cmdLn) {
+		String[] cmd = cmdLn.split(" ");
+		switch(cmd[0]) {
 		case "inventory":
 			p(player.getInventory());
 			break;
@@ -40,7 +41,7 @@ public class game {
 			endVal = false;
 			 break;
 		case "go":
-			m.moveTo(cmd.split(" ")[1]);
+			m.moveTo(cmd[1]);
 			break;
 		case "use":
 		}

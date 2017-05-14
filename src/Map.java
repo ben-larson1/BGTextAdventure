@@ -26,13 +26,13 @@ public class Map {
 	public void borderWarning() { //triggers when the player tries to go beyond the map boundaries
 		switch(mapType) {
 		case "default": //if it is the generic map
-			System.out.println("Its too treacharous to continue on this path, maybe I should turn around...");
+			game.p("Its too treacharous to continue on this path, maybe I should turn around...");
 			break;
 		case "BuildingMap": //if it is a building map
-			System.out.println("Watch out for the wall");
+			game.p("Watch out for the wall");
 			break;
 		case "TownMap": //if it is a town map
-			System.out.println("Try leaving the town through the gate");
+			game.p("Try leaving the town through the gate");
 		}
 	}
 	
@@ -136,8 +136,16 @@ public class Map {
 	
 	public String toString() {
 
-		String retVal = "";
+		String retVal = "\n";
+		
+		for(int j = 1; j <= grid[0].length; j++) {
+			retVal += "\t" + j + "\t";
+		}
+		
+		retVal += "\n\n";
+		
 		for(int i = 0; i < grid.length; i++) {
+			retVal += "" + (i + 1);
 			for(int j = 0; j < grid[0].length; j++) {
 				retVal += "\t";
 				if(grid[i][j] == null) {
@@ -158,17 +166,34 @@ public class Map {
 
 	public void moveTo(String dir) {
 		if(dir.equalsIgnoreCase("n") || dir.equalsIgnoreCase("north")){
+			if(currY <= 0) {
+				borderWarning();
+				return;
+			}
+			currY--;
+		} else if (dir.equalsIgnoreCase("s") || dir.equalsIgnoreCase("south")) {
+			if(currY >= grid.length - 1) {
+				borderWarning();
+				return;
+			}
+			currY++;
+		} else if (dir.equalsIgnoreCase("e")||dir.equalsIgnoreCase("East")) {
+			if(currX >= grid[0].length - 1) {
+				borderWarning();
+				return;
+			}
+			currX++;
+		} else if (dir.equalsIgnoreCase("w")||dir.equalsIgnoreCase("west")) {
 			if(currX <= 0) {
 				borderWarning();
 				return;
 			}
 			currX--;
-		} else if (dir.equals("s") || dir.equalsIgnoreCase("south")) {
-			
 		}
 	}
 	
-	public Tile currLoc() {
-		return null;
+	public int[] currLoc() {
+		int[] retVal = {currX, currY};
+		return retVal;
 	}
 }
