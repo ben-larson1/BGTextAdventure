@@ -22,4 +22,8 @@ public class Player extends Entity{
 	public void addToInventory(ItemData item) {
 		inventory.add(item);
 	}
+	
+	public String use(String _item) {
+		return null;
+	}
 }
