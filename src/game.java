@@ -8,14 +8,14 @@ import java.util.*;
  */
 
 public class game {
-	private static Map m = new Map(10, 10);
+	public static Map m = new Map(10, 10);
 	private static Player player;
 	private static Scanner input = new Scanner(System.in);
 	public static boolean endVal = true;
 	
 	public static void main(String[] args) {
 		initialize(); 
-		System.out.println(m.toString());
+//		System.out.println(m.toString());
 		while(endVal) {
 			String cmd = input.nextLine();
 			command(cmd);
@@ -28,7 +28,7 @@ public class game {
 		player = new Player(inputName);
 		System.out.println("Hello " + player.getName() + ", welcome to Canadia");//name is a work in progress
 		m.generateInitialMap();
-		player.addToInventory(new ItemData("Map",null));
+		player.addToInventory(new ItemData("Map",m));
 	}
 	
 	public static void command(String cmdLn) {
@@ -44,6 +44,7 @@ public class game {
 			m.moveTo(cmd[1]);
 			break;
 		case "use":
+			p(player.use(cmd[1]));
 		}
 	}
 	
