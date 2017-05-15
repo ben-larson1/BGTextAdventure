@@ -14,7 +14,7 @@ public class ItemData {
 	
 	public String use() {
 		if(type.equalsIgnoreCase("Map")) {
-			return m.toString();
+			return m.toString() + "You are at row " + m.currLoc()[0] + ", column " + m.currLoc()[1] + "\n";
 		}
 		return null;
 	}

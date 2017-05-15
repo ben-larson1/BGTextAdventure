@@ -1,19 +1,13 @@
 import java.util.Random;
 
-public class Field extends Tile implements Clusterable{
-//	private boolean isClustered;
+public class Field extends Tile implements Clusterable {
 	private int clusterSize;
 	
 	public Field( int clstrSize) {
-	//	isClustered = doesItCluster;
 		clusterSize = clstrSize;
-//		if (isClustered) {
-//			Cluster(clusterSize);
-//		}
 	}
 	
 	public Field() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {

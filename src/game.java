@@ -37,7 +37,7 @@ public class game {
 		case "inventory":
 			p(player.getInventory());
 			break;
-		case "exit":
+		case "quit":
 			endVal = false;
 			 break;
 		case "go":
@@ -45,6 +45,7 @@ public class game {
 			break;
 		case "use":
 			p(player.use(cmd[1]));
+			break;
 		}
 	}
 	

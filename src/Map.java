@@ -189,11 +189,41 @@ public class Map {
 				return;
 			}
 			currX--;
+		} else if(dir.equalsIgnoreCase("ne") || dir.equalsIgnoreCase("north east")){
+			if(currY <= 0 && currX >= grid[0].length - 1) {
+				borderWarning();
+				return;
+			}
+			currY--;
+			currX++;
+		} else if (dir.equalsIgnoreCase("se") || dir.equalsIgnoreCase("south east")) {
+			if(currY >= grid.length - 1 && currX >= grid[0].length - 1) {
+				borderWarning();
+				return;
+			}
+			currY++;
+			currX++;
+		} else if (dir.equalsIgnoreCase("nw")||dir.equalsIgnoreCase("north west")) {
+			if(currY <= 0 && currX <= 0) {
+				borderWarning();
+				return;
+			}
+			currX--;
+			currY--;
+		} else if (dir.equalsIgnoreCase("sw")||dir.equalsIgnoreCase("south west")) {
+			if(currX <= 0 && currY >= grid.length - 1) {
+				borderWarning();
+				return;
+			}
+			currX--;
+			currY++;
+		} else {
+			game.p("invalid direction");
 		}
 	}
 	
 	public int[] currLoc() {
-		int[] retVal = {currX, currY};
+		int[] retVal = {currY + 1, currX + 1};
 		return retVal;
 	}
 }
