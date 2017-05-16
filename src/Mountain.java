@@ -5,12 +5,16 @@ public class Mountain extends Tile implements Clusterable{
 	private int clusterSize;
 	
 	public Mountain(int clstrSize) {
-		super("You are in a rocky mountain");
+		super("You are in a rocky mountain", items());
 		clusterSize = clstrSize;
 	}
 	
 	public Mountain() {
-		super("You are in a rocky mountain");
+		super("You are in a rocky mountain", items());
+	}
+
+	public static ItemData[] items() {
+		return null;
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {

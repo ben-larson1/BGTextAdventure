@@ -5,12 +5,16 @@ public class Forest extends Tile implements Clusterable{
 	private int clusterSize;
 	
 	public Forest(int clstrSize) {
-		super("You are in a dark forest");
+		super("You are in a dark forest", items());
 		clusterSize = clstrSize;
 	}
 	
 	public Forest() {
-		super("You are in a dark forest");
+		super("You are in a dark forest", items());
+	}
+
+	public static ItemData[] items() {
+		return null;
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {

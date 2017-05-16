@@ -4,13 +4,15 @@ public class Tile {
 	private Map tileMap;
 	public boolean isLoaded = false;
 	private String text;
+	private ItemData[] items;
 	
 	public Tile() {
 		
 	}
 	
-	public Tile(String _text) {
+	public Tile(String _text, ItemData[] _items) {
 		text = _text;
+		items = _items;
 	}
 	
 	public Tile(Map m) {

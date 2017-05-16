@@ -5,12 +5,16 @@ public class Swamp extends Tile implements Clusterable {
 	private int clusterSize;
 	
 	public Swamp(int clstrSize) {
-		super("You are in a wet swamp");
+		super("You are in a wet swamp", items());
 		clusterSize = clstrSize;
 	}
 	
 	public Swamp() {
-		super("You are in a wet swamp");
+		super("You are in a wet swamp", items());
+	}
+
+	public static ItemData[] items() {
+		return null;
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {
