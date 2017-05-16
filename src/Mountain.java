@@ -5,15 +5,12 @@ public class Mountain extends Tile implements Clusterable{
 	private int clusterSize;
 	
 	public Mountain(int clstrSize) {
-//		isClustered = doesItCluster;
+		super("You are in a rocky mountain");
 		clusterSize = clstrSize;
-//		if (isClustered) {
-//			Cluster(clusterSize);
-//		}
 	}
 	
 	public Mountain() {
-		// TODO Auto-generated constructor stub
+		super("You are in a rocky mountain");
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {

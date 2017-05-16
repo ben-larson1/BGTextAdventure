@@ -122,7 +122,7 @@ public class Map {
 	/** This method generates a cluster of Tiles that are Clusterable
 	 * 		 type: input a number that is the SubClass of Tile (0 = Field, 1 = Forest, 2 = Mountain, 3 = Swamp)
 	 */
-	public void generateCluster(int type, int _x, int _y) {
+	public void generateCluster(int type, int _x, int _y) { 
 		if(type == 0) {
 			grid = ((Field)grid[_y][_x]).Cluster(grid, _x, _y);
 		} else if(type == 1) {
@@ -164,63 +164,66 @@ public class Map {
 		return retVal;
 	}
 
-	public void moveTo(String dir) {
+	public boolean moveTo(String dir) {
 		if(dir.equalsIgnoreCase("n") || dir.equalsIgnoreCase("north")){
 			if(currY <= 0) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currY--;
 		} else if (dir.equalsIgnoreCase("s") || dir.equalsIgnoreCase("south")) {
 			if(currY >= grid.length - 1) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currY++;
 		} else if (dir.equalsIgnoreCase("e")||dir.equalsIgnoreCase("East")) {
 			if(currX >= grid[0].length - 1) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currX++;
 		} else if (dir.equalsIgnoreCase("w")||dir.equalsIgnoreCase("west")) {
 			if(currX <= 0) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currX--;
 		} else if(dir.equalsIgnoreCase("ne") || dir.equalsIgnoreCase("north east")){
-			if(currY <= 0 && currX >= grid[0].length - 1) {
+			if(currY <= 0 || currX >= grid[0].length - 1) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currY--;
 			currX++;
 		} else if (dir.equalsIgnoreCase("se") || dir.equalsIgnoreCase("south east")) {
-			if(currY >= grid.length - 1 && currX >= grid[0].length - 1) {
+			if(currY >= grid.length - 1 || currX >= grid[0].length - 1) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currY++;
 			currX++;
 		} else if (dir.equalsIgnoreCase("nw")||dir.equalsIgnoreCase("north west")) {
-			if(currY <= 0 && currX <= 0) {
+			if(currY <= 0 || currX <= 0) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currX--;
 			currY--;
 		} else if (dir.equalsIgnoreCase("sw")||dir.equalsIgnoreCase("south west")) {
-			if(currX <= 0 && currY >= grid.length - 1) {
+			if(currX <= 0 || currY >= grid.length - 1) {
 				borderWarning();
-				return;
+				return false;
 			}
 			currX--;
 			currY++;
 		} else {
 			game.p("invalid direction");
 		}
+		return true;
 	}
+
+	public Tile getCurrentTile() { return grid[currY][currX]; }
 	
 	public int[] currLoc() {
 		int[] retVal = {currY + 1, currX + 1};

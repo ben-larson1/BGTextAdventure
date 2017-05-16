@@ -4,10 +4,13 @@ public class Field extends Tile implements Clusterable {
 	private int clusterSize;
 	
 	public Field( int clstrSize) {
+		super("You are in an open field");
 		clusterSize = clstrSize;
+		
 	}
 	
 	public Field() {
+		super("You are in an open field");
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {

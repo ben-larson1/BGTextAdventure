@@ -29,6 +29,7 @@ public class game {
 		System.out.println("Hello " + player.getName() + ", welcome to Canadia");//name is a work in progress
 		m.generateInitialMap();
 		player.addToInventory(new ItemData("Map",m));
+		p(m.getCurrentTile().getText());
 	}
 	
 	public static void command(String cmdLn) {
@@ -42,6 +43,7 @@ public class game {
 			 break;
 		case "go":
 			m.moveTo(cmd[1]);
+			p(m.getCurrentTile().getText());
 			break;
 		case "use":
 			p(player.use(cmd[1]));
