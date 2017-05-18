@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Swamp extends Tile implements Clusterable {
@@ -13,7 +14,7 @@ public class Swamp extends Tile implements Clusterable {
 		super("You are in a wet swamp", items());
 	}
 
-	public static ItemData[] items() {
+	public static ArrayList<ItemData> items() {
 		return null;
 	}
 

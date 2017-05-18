@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Forest extends Tile implements Clusterable{
@@ -13,7 +14,7 @@ public class Forest extends Tile implements Clusterable{
 		super("You are in a dark forest", items());
 	}
 
-	public static ItemData[] items() {
+	public static ArrayList<ItemData> items() {
 		return null;
 	}
 
