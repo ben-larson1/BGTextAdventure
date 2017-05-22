@@ -24,11 +24,19 @@ public class Tile {
 	
 	public void generateItemList(ArrayList<ItemData> _items) {
 		Random r = new Random();
-		int itemAmt = (int)(r.nextInt(_items.size()));
+		int itemAmt = r.nextInt(_items.size());
 		items = new ArrayList<ItemData>(); 
 		for(int i = 0; i < itemAmt; i++) {
 			items.add(_items.remove(r.nextInt(_items.size())));
 		}
+	}
+	
+	public String printItemList() {
+		String retVal = "\n";
+		for(ItemData item : items) {
+			retVal += item.toString() + "\n";
+		}
+		return retVal;
 	}
 	
 	

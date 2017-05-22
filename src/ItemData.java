@@ -29,7 +29,4 @@ public class ItemData {
 		return null;
 	}
 	
-	public String getType() {
-		return type;
-	}
 }

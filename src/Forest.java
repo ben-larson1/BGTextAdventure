@@ -15,7 +15,9 @@ public class Forest extends Tile implements Clusterable{
 	}
 
 	public static ArrayList<ItemData> items() {
-		return null;
+		ArrayList<ItemData> retVal = new ArrayList<ItemData>();
+		retVal.add(new ItemData("rock"));
+		return retVal;
 	}
 
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {

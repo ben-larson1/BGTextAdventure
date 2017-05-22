@@ -47,6 +47,9 @@ public class game {
 			break;
 		case "use":
 			p(player.use(cmd[1]));
+			break;
+		case "look":
+			p(m.getCurrentTile().printItemList());
 		}
 	}
 	
