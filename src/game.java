@@ -34,7 +34,7 @@ public class game {
 	
 	public static void command(String cmdLn) {
 		String[] cmd = cmdLn.split(" ");
-		switch(cmd[0]) {
+		switch(cmd[0].toLowerCase()) {
 		case "inventory":
 			p(player.getInventory());
 			break;
@@ -50,11 +50,15 @@ public class game {
 			break;
 		case "look":
 			p(m.getCurrentTile().printItemList());
+			break;
+		case "take":
+		case "pick up":
+			Object[] tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
+			player = (Player)tempVal[0];
+			p((String)tempVal[1]);
 		}
 	}
 	
-	public static void p(Object e) {
-		System.out.println(e);
-	}
+	public static void p(Object e) { System.out.println(e); }
 
 }

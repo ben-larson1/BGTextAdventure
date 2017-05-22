@@ -24,6 +24,12 @@ public class Player extends Entity{
 	}
 	
 	public String use(String _item) {//takes the item the player chooses to use and triggers ItemData.use()
+		if(_item.equalsIgnoreCase("key")) {
+			for(int i = 0; i < inventory.size(); i ++) {
+				
+			}
+		}
+		
 		for(int i = 0; i < inventory.size();i++) {
 			if(inventory.get(i).toString().equalsIgnoreCase(_item)) {
 				return inventory.get(i).use();

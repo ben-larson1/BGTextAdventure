@@ -39,7 +39,16 @@ public class Tile {
 		return retVal;
 	}
 	
-	
+	public Object[] tryPickup(Player p, String checkItem) {
+		Object[] retVal = {p, "That item does not exist in this tile"};
+		for(int i = 0; i < items.size(); i++) {
+			if(items.get(i).toString().equals(checkItem)) {
+				((Player)retVal[0]).addToInventory(items.remove(i));
+				retVal[1] = "Congrats, you got a " + checkItem;
+			}
+		}
+		return retVal;
+	}
 	
 	public String toString() {
 		String retVal = this.getClass().toString().substring(6);

@@ -14,13 +14,27 @@ public class Field extends Tile implements Clusterable {
 		super("You are in an open field", items());
 	}
 	
+	/**
+	 * this generates the initial list of items a given tile can have
+	 * @return ArrayList that contains all of the possible items in the tile type
+	 */
 	public static ArrayList<ItemData> items() {
 		ArrayList<ItemData> retVal = new ArrayList<ItemData>();
 		retVal.add(new ItemData("rock"));
 		retVal.add(new ItemData("rock"));
+		retVal.add(new ItemData("bird"));
+		retVal.add(new ItemData("mouse"));
+		retVal.add(new ItemData("snake"));
+		retVal.add(new ItemData("shovel"));
 		return retVal;
 	}
 
+	/**
+	 * This generates a cluster of Field, centered around the given coordinates
+	 * @param x : the x coordinate
+	 * @param y : the y coordinate
+	 * @param grid : the map that is being clustered on
+	 */
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {
 		int size = clusterSize;
 		int _x = x, _y = y;
