@@ -7,6 +7,7 @@ public class Tile {
 	public boolean isLoaded = false;
 	private String text;
 	private ArrayList<ItemData> items;
+	private boolean hasDungeon;
 	
 	public Tile() {
 		
@@ -18,9 +19,21 @@ public class Tile {
 		
 	}
 	
+	public Tile(String _text, ArrayList<ItemData> _items, boolean genDungeon) {
+		text = _text;
+		generateItemList(_items);
+		if(genDungeon) {
+			text += "\n\tWatch out for the Dungeon!";
+		}
+		hasDungeon = genDungeon;
+		
+	}
+	
 	public Tile(Map m) {
 		tileMap = m;
 	}
+	
+	public boolean doesItHaveDungeon() { return hasDungeon; }
 	
 	public void generateItemList(ArrayList<ItemData> _items) {
 		Random r = new Random();

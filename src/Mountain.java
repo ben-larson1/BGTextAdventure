@@ -6,12 +6,17 @@ public class Mountain extends Tile implements Clusterable{
 	private int clusterSize;
 	
 	public Mountain(int clstrSize) {
-		super("You are in a rocky mountain", items());
+		super("You are in a rocky mountain", items(), doesGenDungeon());
 		clusterSize = clstrSize;
 	}
 	
 	public Mountain() {
-		super("You are in a rocky mountain", items());
+		super("You are in a rocky mountain", items(), doesGenDungeon());
+	}
+	
+	public static boolean doesGenDungeon() {
+		Random r = new Random();
+		return r.nextBoolean();
 	}
 
 	public static ArrayList<ItemData> items() {

@@ -17,6 +17,11 @@ public class Swamp extends Tile implements Clusterable {
 	public static ArrayList<ItemData> items() {
 		ArrayList<ItemData> retVal = new ArrayList<ItemData>();
 		retVal.add(new ItemData("rock"));
+		retVal.add(new ItemData("lilypad"));
+		retVal.add(new ItemData("flower"));
+		retVal.add(new ItemData("toad"));
+		retVal.add(new ItemData("log"));
+		retVal.add(new ItemData("sword"));
 		return retVal;
 	}
 

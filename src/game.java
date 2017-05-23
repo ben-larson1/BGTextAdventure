@@ -15,13 +15,15 @@ public class game {
 	
 	public static void main(String[] args) {
 		initialize(); 
-//		System.out.println(m.toString());
 		while(endVal) {
 			String cmd = input.nextLine();
 			command(cmd);
 		}
 	}
 	
+	/**
+	 * t
+	 */
 	public static void initialize() { //initializes the game
 		System.out.println("Please enter your name...");
 		String inputName = input.nextLine();
@@ -29,36 +31,53 @@ public class game {
 		System.out.println("Hello " + player.getName() + ", welcome to Canadia");//name is a work in progress
 		m.generateInitialMap();
 		player.addToInventory(new ItemData("Map",m));
-		p(m.getCurrentTile().getText());
+		pl(m.getCurrentTile().getText());
 	}
 	
+	/**
+	 * this is what runs the stuff you trigger
+	 * @param cmdLn : input the command given by the user
+	 */
 	public static void command(String cmdLn) {
 		String[] cmd = cmdLn.split(" ");
 		switch(cmd[0].toLowerCase()) {
 		case "inventory":
-			p(player.getInventory());
+			pl(player.getInventory());
 			break;
 		case "exit":
 			endVal = false;
 			 break;
 		case "go":
 			m.moveTo(cmd[1]);
-			p(m.getCurrentTile().getText());
+			pl(m.getCurrentTile().getText());
 			break;
 		case "use":
-			p(player.use(cmd[1]));
+			pl(player.use(cmd[1]));
 			break;
 		case "look":
-			p(m.getCurrentTile().printItemList());
+			if(m.getCurrentTile().doesItHaveDungeon()) {
+				pl("There is a dungeon");
+			}
+			pl(m.getCurrentTile().printItemList());
 			break;
 		case "take":
 		case "pick up":
 			Object[] tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
 			player = (Player)tempVal[0];
-			p((String)tempVal[1]);
+			pl((String)tempVal[1]);
 		}
 	}
 	
-	public static void p(Object e) { System.out.println(e); }
+	/**
+	 * ie: System.out.println()
+	 * @param e : the Object that will be printed
+	 */
+	public static void pl(Object e) { System.out.println(e); }
+	
+	/**
+	 * ie: System.out.print()
+	 * @param e : the Object that will be printed
+	 */
+	public static void p(Object e) { System.out.print(e); }
 
 }
