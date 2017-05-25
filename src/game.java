@@ -61,10 +61,24 @@ public class game {
 			pl(m.getCurrentTile().printItemList());
 			break;
 		case "take":
-		case "pick up":
+		case "pick_up":
 			Object[] tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
 			player = (Player)tempVal[0];
 			pl((String)tempVal[1]);
+			break;
+		case "help":
+		case "?":
+			String pVal = "Here are the commands you can use:\n\n"
+					+ "inventory\t\tprints out your inventory\n"
+					+ "exit\t\t\tquits the game\n"
+					+ "go\t\t\tmoves you in a direction\n\t\t\t\tcan be entered as:\n\t\t\t\tn, s, e, w, ne, nw, etc\n\t\t\t\tor north, south, east, west, northeast, northwest, etc\n"
+					+ "use\t\t\tuses the selected item\n"
+					+ "look\t\t\ttells you the data of the current tile\n"
+					+ "take, pick_up\t\tremoves an item from the current tile and adds it to your inventory\n";
+			pl(pVal);
+					
+			
+			
 		}
 	}
 	

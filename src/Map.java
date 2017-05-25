@@ -190,28 +190,28 @@ public class Map {
 				return false;
 			}
 			currX--;
-		} else if(dir.equalsIgnoreCase("ne") || dir.equalsIgnoreCase("north east")){
+		} else if(dir.equalsIgnoreCase("ne") || dir.equalsIgnoreCase("northeast")){
 			if(currY <= 0 || currX >= grid[0].length - 1) {
 				borderWarning();
 				return false;
 			}
 			currY--;
 			currX++;
-		} else if (dir.equalsIgnoreCase("se") || dir.equalsIgnoreCase("south east")) {
+		} else if (dir.equalsIgnoreCase("se") || dir.equalsIgnoreCase("southeast")) {
 			if(currY >= grid.length - 1 || currX >= grid[0].length - 1) {
 				borderWarning();
 				return false;
 			}
 			currY++;
 			currX++;
-		} else if (dir.equalsIgnoreCase("nw")||dir.equalsIgnoreCase("north west")) {
+		} else if (dir.equalsIgnoreCase("nw")||dir.equalsIgnoreCase("northwest")) {
 			if(currY <= 0 || currX <= 0) {
 				borderWarning();
 				return false;
 			}
 			currX--;
 			currY--;
-		} else if (dir.equalsIgnoreCase("sw")||dir.equalsIgnoreCase("south west")) {
+		} else if (dir.equalsIgnoreCase("sw")||dir.equalsIgnoreCase("southwest")) {
 			if(currX <= 0 || currY >= grid.length - 1) {
 				borderWarning();
 				return false;
@@ -219,7 +219,7 @@ public class Map {
 			currX--;
 			currY++;
 		} else {
-			game.p("invalid direction");
+			game.pl("invalid direction");
 		}
 		return true;
 	}
