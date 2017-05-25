@@ -22,7 +22,7 @@ public class game {
 	}
 	
 	/**
-	 * t
+	 * this is what sets up the game
 	 */
 	public static void initialize() { //initializes the game
 		System.out.println("Please enter your name...");
