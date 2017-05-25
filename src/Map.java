@@ -82,7 +82,8 @@ public class Map {
 	public void generateTile(int _y, int _x, int loc) {
 		Random r = new Random();
 		if(loc == 1) { //if the Tile is deemed to be inside
-			grid[_y][_x] = new Room();
+			//ignore this, it does nothing currently
+			grid[_y][_x] = null;
 		} else if(loc == 2) { //if the Tile is deemed to be in a town
 			grid[_y][_x] = new Town();
 		} else if(loc == 3) {
