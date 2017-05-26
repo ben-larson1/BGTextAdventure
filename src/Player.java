@@ -24,17 +24,34 @@ public class Player extends Entity{
 	}
 	
 	public String use(String _item) {//takes the item the player chooses to use and triggers ItemData.use()
-		if(_item.equalsIgnoreCase("key")) {
-			for(int i = 0; i < inventory.size(); i ++) {
-				
-			}
-		}
 		
 		for(int i = 0; i < inventory.size();i++) {
 			if(inventory.get(i).toString().equalsIgnoreCase(_item)) {
-				return inventory.get(i).use();
+				return inventory.get(i).use(this);
 			}
 		}
 		return null;
+	}
+	
+	public boolean has(String _item) {
+		for(int i = 0; i < inventory.size();i++) {
+			if(inventory.get(i).toString().equalsIgnoreCase(_item)) {
+				inventory.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * removes an item from your inventory
+	 * @param selectedItem : the item to be removed
+	 */
+	public void drop(String selectedItem) {
+		for(int i = 0; i < inventory.size();i++) {
+			if(inventory.get(i).toString().equalsIgnoreCase(selectedItem)) {
+				inventory.remove(i);
+			}
+		}
 	}
 }

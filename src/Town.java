@@ -15,12 +15,12 @@ public class Town extends Tile { // make pregenerated Towns
 	 */
 	public static ArrayList<ItemData> items() {
 		ArrayList<ItemData> retVal = new ArrayList<ItemData>();
-		retVal.add(new ItemData("rock"));
-		retVal.add(new ItemData("rock"));
-		retVal.add(new ItemData("bird"));
-		retVal.add(new ItemData("mouse"));
-		retVal.add(new ItemData("snake"));
-		retVal.add(new ItemData("shovel"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
 		return retVal;
 	}
 }
