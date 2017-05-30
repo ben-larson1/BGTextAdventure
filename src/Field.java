@@ -20,8 +20,8 @@ public class Field extends Tile implements Clusterable {
 	 */
 	public static ArrayList<ItemData> items() {
 		ArrayList<ItemData> retVal = new ArrayList<ItemData>();
-		retVal.add(new ItemData("rock"));
-		retVal.add(new ItemData("rock"));
+		retVal.add(new ItemData("rock", 1));
+		retVal.add(new ItemData("rock", 1));
 		retVal.add(new ItemData("bird"));
 		retVal.add(new ItemData("mouse"));
 		retVal.add(new ItemData("snake"));

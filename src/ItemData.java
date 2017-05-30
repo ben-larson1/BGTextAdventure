@@ -8,10 +8,12 @@ public class ItemData {
 	public ItemData(String _type, Map _m) {
 		type = _type;
 		m = _m;
+		attackVal = 0;
 	}
 	
 	public ItemData(String _type) {
 		type = _type;
+		attackVal = 0;
 	}
 	
 	public ItemData(String _type, int _attackVal) {
@@ -21,6 +23,14 @@ public class ItemData {
 	
 	public String toString() {
 		String retVal = type;
+		if(attackVal != 0) {
+			if(type.length() >= 8)
+			{
+				retVal += "\t\tAttack Value: " + attackVal;
+			} else {
+				retVal += "\t\t\tAttack Value: " + attackVal;
+			}
+		} 
 		return retVal;
 	}
 	
@@ -46,6 +56,10 @@ public class ItemData {
 		}
 		
 	}
+	
+	public String getType() { return type; }
+	
+	public int getAttack() { return attackVal; }
 	
 	public ItemData loot() {
 		Random r = new Random();

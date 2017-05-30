@@ -40,6 +40,7 @@ public class game {
 	 */
 	public static void command(String cmdLn) {
 		String[] cmd = cmdLn.split(" ");
+		Object[] tempVal;
 		switch(cmd[0].toLowerCase()) {
 		case "inventory":
 			pl(player.getInventory());
@@ -56,15 +57,25 @@ public class game {
 			break;
 		case "look":
 			if(m.getCurrentTile().doesItHaveDungeon()) {
-				pl("There is a dungeon");
+				pl("\nThere is a dungeon");
 			}
 			pl(m.getCurrentTile().printItemList());
 			break;
 		case "take":
 		case "pick_up":
-			Object[] tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
+			tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
 			player = (Player)tempVal[0];
 			pl((String)tempVal[1]);
+			break;
+		case "inspect":
+			if(player.has(cmd[1])) {
+				pl(player.inspect(cmd[1]));
+			}
+			break;
+		case "attack":
+			tempVal = player.attack(cmd[1], m);
+			m = (Map)tempVal[1];
+			pl(tempVal[0]);
 			break;
 		case "help":
 		case "?":
