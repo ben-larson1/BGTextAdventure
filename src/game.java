@@ -16,8 +16,12 @@ public class game {
 	public static void main(String[] args) {
 		initialize(); 
 		while(endVal) {
+			if(player.getHealth() <= 0) {
+				endVal = false;
+			}
 			String cmd = input.nextLine();
 			command(cmd);
+			pl(player.getHealth());
 		}
 	}
 	
@@ -77,6 +81,10 @@ public class game {
 			m = (Map)tempVal[1];
 			pl(tempVal[0]);
 			break;
+		case "cheat":
+			player.addToInventory(new ItemData("EpicSword",10000));
+			pl("Wow such a loser. You can't even play this game WHERE YOU CAN'T DIE without cheating...");
+			break;
 		case "help":
 		case "?":
 			String pVal = "Here are the commands you can use:\n\n"
@@ -87,7 +95,12 @@ public class game {
 					+ "look\t\t\ttells you the data of the current tile\n"
 					+ "take, pick_up\t\tremoves an item from the current tile and adds it to your inventory\n";
 			pl(pVal);
-					
+			break;
+		case "stupid":
+			pl("Nice try");
+			break;
+		default:
+			pl("Wat?");
 			
 			
 		}

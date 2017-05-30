@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player extends Entity{
 	private String name;
@@ -106,15 +107,52 @@ public class Player extends Entity{
 	 */
 	public Object[] attack(String attackWith, Map m) {
 		Object[] retVal = new Object[2];
+		int attackVal = 0;;
 		if(has(attackWith)) {
 			if(!m.getCurrentTile().doesItHaveDungeon()) {
 				retVal[0] = "There are no monsters on this tile";
 			} else {
-				retVal[0] = "\n\tHEATH OF MONSTER:\t" + m.getCurrentTile().getDungeon().getMonster().getHealth();
+				for(int i = 0; i < inventory.size(); i++) {
+					if(inventory.get(i).getType().equalsIgnoreCase(attackWith)) {
+						attackVal = inventory.get(i).getAttack();
+						break;
+					}
+				}
+				if(attackWith.equalsIgnoreCase("ShinyRock")) {
+					drop("ShinyRock");
+				}
+				m.getCurrentTile().getDungeon().damageMonster(attackVal);
+				retVal[0] = "\n\tHEALTH OF MONSTER:\t" + m.getCurrentTile().getDungeon().getMonster().getHealth() + "\n";
+				if(m.getCurrentTile().getDungeon().getMonster().getHealth() <= 0){
+					retVal[0] = "\nThe monster is dead, CONGRAGULATIONS!!!!!!!\nHere is your prize\n";
+					addToInventory(loot());
+				} else {
+					damage(m.getCurrentTile().getDungeon().getMonster().attackBack());
+					if(health <= 0) {
+						game.pl("You ded, RIP");
+					}
+				}
 			}
 		}
 		
 		retVal[1] = m;
 		return retVal;
+	}
+	
+	/**
+	 * generates the random loot when you kill the monster
+	 * @return the ItemData that is added to the inventory
+	 */
+	public ItemData loot() {
+		Random r = new Random();
+		switch(r.nextInt(10)) {
+		case 0:
+		case 1:
+			return new ItemData("GoldenSword", 13);
+		case 2:
+			return new ItemData("BattleAxe",20);
+		default:
+			return new ItemData("ShinyRock", 100);
+		}
 	}
 }

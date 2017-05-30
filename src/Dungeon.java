@@ -4,7 +4,8 @@ public class Dungeon extends Structure{
 	Monster monster;
 	
 	public Dungeon() {
-		
+		level = 2;
+		generateMonster();
 	}
 	
 	/**
@@ -13,6 +14,7 @@ public class Dungeon extends Structure{
 	 */
 	public Dungeon(int _level) {
 		level = _level;
+		generateMonster();
 	}
 	
 	private void generateMonster() {
