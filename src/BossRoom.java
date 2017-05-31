@@ -14,5 +14,7 @@ public class BossRoom extends Tile {
 		return retVal;
 	}
 	
+	public Monster getBoss() { return boss; }
+	
 	 
 }

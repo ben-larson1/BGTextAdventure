@@ -26,6 +26,7 @@ public class game {
 			String cmd = input.nextLine();
 			command(cmd);
 		}
+		bossBattle();
 	}
 	
 	/**
@@ -67,7 +68,11 @@ public class game {
 			}
 			break;
 		case "use":
-			pl(player.use(cmd[1]));
+			if(cmd.length > 1) {
+				pl(player.use(cmd[1]));
+			} else {
+				pl("Insufficient parameters");
+			}
 			break;
 		case "look":
 			if(m.getCurrentTile().doesItHaveDungeon()) { 
@@ -77,19 +82,35 @@ public class game {
 			break;
 		case "take":
 		case "pick_up":
-			tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
-			player = (Player)tempVal[0];
-			pl((String)tempVal[1]);
-			break;
-		case "inspect":
-			if(player.has(cmd[1])) {
-				pl(player.inspect(cmd[1]));
+			if(cmd.length > 1) {
+				tempVal = m.getCurrentTile().tryPickup(player, cmd[1].toLowerCase());
+				player = (Player)tempVal[0];
+				pl((String)tempVal[1]);
+			} else {
+				pl("Insufficient parameters");
 			}
 			break;
+		case "inspect":
+			if(cmd.length > 1) {
+				if(player.has(cmd[1])) {
+					pl(player.inspect(cmd[1]));
+				} else {
+					pl("you don't have that item...");
+				}
+			} else {
+				pl("Insufficient Parameters");
+			}
+			
+			break;
 		case "attack":
-			tempVal = player.attack(cmd[1], m);
-			m = (Map)tempVal[1];
-			pl(tempVal[0]);
+			if(cmd.length > 1 ) {
+				tempVal = player.attack(cmd[1], m);
+				m = (Map)tempVal[1];
+				pl(tempVal[0]);
+			} else {
+				pl("Please enter what you wish to attack with");
+			}
+			
 			break;
 		case "cheat":
 			player.addToInventory(new ItemData("EpicSword",10000));
@@ -146,17 +167,13 @@ public class game {
 	public static void challenge() {
 		Tile saveTile = m.getCurrentTile();
 		m = new Map(1,1, saveTile);
-		while(endVal) {
-			if(player.getHealth() <= 0) {
-				break; 
-			}
-			String cmd = input.nextLine();
-			bossBattle(cmd);
-		}
+		endVal = false;
 	}
 	
-	public static void bossBattle(String cmd) {
-		
+	public static void bossBattle() {
+		while(player.getHealth() > 0 && ((BossRoom)m.getCurrentTile()).getBoss().getHealth() > 0) {
+			
+		}
 	}
 	
 	/**
