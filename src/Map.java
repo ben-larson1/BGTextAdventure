@@ -24,16 +24,7 @@ public class Map {
 	public int getY() { return y; }
 	
 	public void borderWarning() { //triggers when the player tries to go beyond the map boundaries
-		switch(mapType) {
-		case "default": //if it is the generic map
-			game.p("Its too treacharous to continue on this path, maybe I should turn around...");
-			break;
-		case "BuildingMap": //if it is a building map
-			game.p("Watch out for the wall");
-			break;
-		case "TownMap": //if it is a town map
-			game.p("Try leaving the town through the gate");
-		}
+		game.p("Its too treacharous to continue on this path, maybe I should turn around...");
 	}
 	
 	public void generateMap() {
@@ -51,6 +42,9 @@ public class Map {
 	}
 	
 	
+	/**
+	 * generates the map at the beginning of the game
+	 */
 	public void generateInitialMap() {
 		grid = new Tile[y][x];
 		for(int i = 0; i < y; i++) { //i represents y
@@ -69,6 +63,7 @@ public class Map {
 				
 			}
 		}
+		grid[y - 1][x - 1] = new BossRoom();
 		
 	}
 	
@@ -165,7 +160,13 @@ public class Map {
 		return retVal;
 	}
 
+	/**
+	 * moves you in a certain direction
+	 * @param dir
+	 * @return
+	 */
 	public boolean moveTo(String dir) {
+		int[] currLoc = {currY, currX};
 		if(dir.equalsIgnoreCase("n") || dir.equalsIgnoreCase("north")){
 			if(currY <= 0) {
 				borderWarning();
@@ -221,7 +222,30 @@ public class Map {
 		} else {
 			game.pl("invalid direction");
 		}
+		
+		if(currX == grid[0].length - 1 && currY == grid.length - 1 && !checkAllDungeonsCleared()) {
+			currX = currLoc[1];
+			currY = currLoc[0];
+			game.pl("You have to clear all of the dungeons to take on the boss");
+		}
+		game.pl(checkAllDungeonsCleared());
 		return true;
+	}
+	
+	/**
+	 * checks to see if all dungeons on the map are cleared
+	 * @return boolean
+	 */
+	public boolean checkAllDungeonsCleared() {
+		boolean retVal = true;
+		for(int i = 0; i < grid.length; i++) {
+			for(int j = 0; j < grid[0].length; j++) {
+				if (grid[i][j].doesItHaveDungeon() && !grid[i][j].getDungeon().isCleared()) {
+					retVal = false;
+				}
+			}
+		}
+		return retVal;
 	}
 
 	public Tile getCurrentTile() { return grid[currY][currX]; }

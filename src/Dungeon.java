@@ -2,6 +2,7 @@
 public class Dungeon extends Structure{
 	private int level;
 	Monster monster;
+	boolean cleared = false;
 	
 	public Dungeon() {
 		level = 2;
@@ -35,6 +36,11 @@ public class Dungeon extends Structure{
 	
 	public void damageMonster(int damage) {
 		monster.damage(damage);
+		if(monster.getHealth() <= 0) {
+			cleared = true;
+		}
 	}
+	
+	public boolean isCleared() { return cleared; }
 	
 }

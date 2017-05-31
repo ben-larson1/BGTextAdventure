@@ -56,7 +56,9 @@ public class game {
 			endVal = false;
 			 break;
 		case "go":
-			m.moveTo(cmd[1]);
+			if(cmd.length > 1) {
+				m.moveTo(cmd[1]);
+			}
 			pl(m.getCurrentTile().getText());
 			break;
 		case "use":
