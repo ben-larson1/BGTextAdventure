@@ -28,7 +28,9 @@ public class Player extends Entity{
 	}
 	
 	public void heal(int amount) {
-		health += amount;
+		if (health < 100) { 
+			health += amount;
+		}
 	}
 	
 	public void setHealth(int _health) {

@@ -60,6 +60,11 @@ public class game {
 				m.moveTo(cmd[1]);
 			}
 			pl(m.getCurrentTile().getText());
+			player.heal(1);
+			if(m.getCurrentTile().getClass().toString().equalsIgnoreCase("class Town")) {
+				player.setHealth(100);
+				pl("The townsfolk have healed you with the mystical power of aspectualization");
+			}
 			break;
 		case "use":
 			pl(player.use(cmd[1]));
@@ -91,7 +96,7 @@ public class game {
 			pl("Wow such a loser. You can't even play this game WHERE YOU CAN'T DIE without cheating...");
 			break;
 		case "reflect":
-			pl("You currently have " + player.getCashMoney() + " Ca$hMoneys");
+			pl("Player Health:\t" + player.getHealth() + "\nCashMoneys:\t" + player.getCashMoney());
 			break;
 		case "help":
 		case "?":
