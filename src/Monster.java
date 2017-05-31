@@ -19,7 +19,7 @@ public class Monster extends Entity{
 	public void damage(int amount) {
 		health -= amount;
 	}
-	
+	 
 	public void heal(int amount) {
 		health += amount;
 	}

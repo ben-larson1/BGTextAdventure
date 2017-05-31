@@ -14,5 +14,5 @@ public class BossRoom extends Tile {
 		return retVal;
 	}
 	
-	
+	 
 }

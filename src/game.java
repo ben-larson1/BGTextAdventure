@@ -112,11 +112,46 @@ public class game {
 		case "interact":
 			pl(interact());
 			break;
+		case "challenge":
+			if(m.getCurrentTile().getClass().toString().equalsIgnoreCase("class BossRoom")) {
+				p("Are you sure you are ready, you cannot leave once you challenge the Boss: ");
+				while(true) {
+					String askVal = input.nextLine();
+					if(askVal.equalsIgnoreCase("yes")) {
+						challenge();
+					}
+				}
+				
+			} else {
+				pl("You cannot challenge anything here");
+			}
+			
 		default:
 			pl("Wat?");
 			
 			
 		}
+	}
+	
+	/**
+	 * this method executes when you challenge the Boss.
+	 * it re-defines the map as being 1x1 with the only tile being the BossRoom from the original map
+	 * once this finishes, the game will terminate
+	 */
+	public static void challenge() {
+		Tile saveTile = m.getCurrentTile();
+		m = new Map(1,1, saveTile);
+		while(endVal) {
+			if(player.getHealth() <= 0) {
+				break; 
+			}
+			String cmd = input.nextLine();
+			bossBattle(cmd);
+		}
+	}
+	
+	public static void bossBattle(String cmd) {
+		
 	}
 	
 	/**

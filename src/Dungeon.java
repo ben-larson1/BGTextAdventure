@@ -17,7 +17,7 @@ public class Dungeon extends Structure{
 		level = _level;
 		generateMonster();
 	}
-	
+	 
 	private void generateMonster() {
 		switch(level) {
 		case 1:

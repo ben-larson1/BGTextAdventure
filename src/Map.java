@@ -14,6 +14,13 @@ public class Map {
 		generateMap();
 	}
 	
+	public Map(int xVal, int yVal, Tile t) {
+		x = xVal;
+		y = yVal;
+		mapType = "default";
+		generateBossMap(t);
+	}
+	
 	public Map(int xVal, int yVal, String type) {
 		x = xVal;
 		y = yVal;
@@ -41,12 +48,19 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * generates the map when the player challenges the boss
+	 */
+	public void generateBossMap(Tile t) {
+		grid = new Tile[y][x];
+		grid[0][0] = t;
+	}
 	
 	/**
 	 * generates the map at the beginning of the game
 	 */
 	public void generateInitialMap() {
-		grid = new Tile[y][x];
+		grid = new Tile[y][x]; 
 		for(int i = 0; i < y; i++) { //i represents y
 			for(int j = 0; j < x; j++) {//j represents x
 				grid[i][j] = null;
