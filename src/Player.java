@@ -5,15 +5,23 @@ public class Player extends Entity{
 	private String name;
 	private ArrayList<ItemData> inventory = new ArrayList<ItemData>();
 	private int health;
+	private int cashMoney;
 	
 	public Player(String _name) {
 		name = _name;
 		health = 100;
+		cashMoney = 0;
 	}
 	
 	public String getName() { return name; }
 	
 	public int getHealth() { return health; }
+	
+	public int getCashMoney() { return cashMoney; }
+	
+	public void charge(int amount) {
+		cashMoney -= amount;
+	}
 	
 	public void damage(int amount) {
 		health -= amount;
@@ -78,6 +86,11 @@ public class Player extends Entity{
 		return retVal;
 	}
 	
+	/**
+	 * checks to see if the player has a specific ItemData
+	 * @param _item : the specific item you are looking for
+	 * @return returns true if the player has it, and false if the player does not
+	 */
 	public boolean has(String _item) {
 		for(int i = 0; i < inventory.size();i++) {
 			if(inventory.get(i).getType().equalsIgnoreCase(_item)) {
@@ -125,11 +138,13 @@ public class Player extends Entity{
 				retVal[0] = "\n\tHEALTH OF MONSTER:\t" + m.getCurrentTile().getDungeon().getMonster().getHealth() + "\n";
 				if(m.getCurrentTile().getDungeon().getMonster().getHealth() <= 0){
 					retVal[0] = "\nThe monster is dead, CONGRAGULATIONS!!!!!!!\nHere is your prize\n";
-					addToInventory(loot());
+					cashMoney += loot();
 				} else {
 					damage(m.getCurrentTile().getDungeon().getMonster().attackBack());
 					if(health <= 0) {
 						game.pl("You ded, RIP");
+					} else {
+						game.pl("Health = " + health);
 					}
 				}
 			}
@@ -143,16 +158,9 @@ public class Player extends Entity{
 	 * generates the random loot when you kill the monster
 	 * @return the ItemData that is added to the inventory
 	 */
-	public ItemData loot() {
+	public int loot() {
 		Random r = new Random();
-		switch(r.nextInt(10)) {
-		case 0:
-		case 1:
-			return new ItemData("GoldenSword", 13);
-		case 2:
-			return new ItemData("BattleAxe",20);
-		default:
-			return new ItemData("ShinyRock", 100);
-		}
+		int retVal = r.nextInt(50) + 75;
+		return retVal;
 	}
 }

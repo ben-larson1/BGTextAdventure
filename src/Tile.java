@@ -63,6 +63,10 @@ public class Tile {
 	
 	public Object[] tryPickup(Player p, String checkItem) {
 		Object[] retVal = {p, "That item does not exist in this tile"};
+		if(checkItem.equalsIgnoreCase("mr.todd") || checkItem.equalsIgnoreCase("Todd_from_NASA")) {
+			retVal[1] = "He is a person, not your property. Treat him with some decency";
+			return retVal;
+		}
 		for(int i = 0; i < items.size(); i++) {
 			if(items.get(i).getType().equalsIgnoreCase(checkItem)) {
 				((Player)retVal[0]).addToInventory(items.remove(i));
@@ -76,6 +80,8 @@ public class Tile {
 	
 	public String getText() { return text; }
 	
-	
+	public ItemData accessItems(int nth) {
+		return items.get(nth);
+	}
 	
 }
