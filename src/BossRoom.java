@@ -10,7 +10,7 @@ public class BossRoom extends Tile {
 	
 	public static ArrayList<ItemData> items() {
 		ArrayList<ItemData> retVal = new ArrayList<ItemData>();
-		retVal.add(new ItemData("VOID"));
+		retVal.add(new ItemData("VOID")); 
 		return retVal;
 	}
 	

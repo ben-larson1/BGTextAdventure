@@ -11,7 +11,7 @@ public class Monster extends Entity{
 	
 	public Monster(int _health, int _attackVal) {
 		health = _health;
-		attackVal = _attackVal;
+		attackVal = _attackVal; 
 	}
 	
 	public int getHealth() { return health; }

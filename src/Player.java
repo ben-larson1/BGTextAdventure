@@ -138,7 +138,7 @@ public class Player extends Entity{
 				retVal[0] = "\n\tHEALTH OF MONSTER:\t" + m.getCurrentTile().getDungeon().getMonster().getHealth() + "\n";
 				if(m.getCurrentTile().getDungeon().getMonster().getHealth() <= 0){
 					retVal[0] = "\nThe monster is dead, CONGRAGULATIONS!!!!!!!\nHere is your prize\n";
-					cashMoney += loot();
+					cashMoney += loot(); 
 				} else {
 					damage(m.getCurrentTile().getDungeon().getMonster().attackBack());
 					if(health <= 0) {

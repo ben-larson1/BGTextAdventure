@@ -65,7 +65,7 @@ public class game {
 			pl(player.use(cmd[1]));
 			break;
 		case "look":
-			if(m.getCurrentTile().doesItHaveDungeon()) {
+			if(m.getCurrentTile().doesItHaveDungeon()) { 
 				pl("\nThere is a dungeon");
 			}
 			pl(m.getCurrentTile().printItemList());

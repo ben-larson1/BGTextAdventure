@@ -24,7 +24,7 @@ public class Mountain extends Tile implements Clusterable{
 		retVal.add(new ItemData("rock", 1));
 		retVal.add(new ItemData("rock", 1));
 		retVal.add(new ItemData("rock", 1));
-		retVal.add(new ItemData("rock", 1));
+		retVal.add(new ItemData("rock", 1)); 
 		retVal.add(new ItemData("rock", 1));
 		retVal.add(new ItemData("rock", 1));
 		retVal.add(new ItemData("rock", 1));

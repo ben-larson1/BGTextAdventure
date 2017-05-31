@@ -11,7 +11,7 @@ public class Swamp extends Tile implements Clusterable {
 	}
 	
 	public Swamp() {
-		super("You are in a wet swamp", items());
+		super("You are in a wet swamp", items()); 
 	}
 
 	public static ArrayList<ItemData> items() {
