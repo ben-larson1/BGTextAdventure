@@ -37,6 +37,9 @@ public class Mountain extends Tile implements Clusterable{
 		return retVal;
 	}
 
+	/**
+	 * Generates a cluster of mountains
+	 */
 	public Tile[][] Cluster(Tile[][] grid, int x, int y) {
 		int size = clusterSize;
 		int _x = x, _y = y;

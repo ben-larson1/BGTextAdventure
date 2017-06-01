@@ -46,6 +46,7 @@ public class Map {
 				
 			}
 		}
+		grid[y - 1][x - 1] = new BossRoom();
 	}
 	
 	/**
@@ -81,6 +82,9 @@ public class Map {
 		
 	}
 	
+	public void setTile(int _x, int _y, Tile t) {
+		grid[_y][_x] = t;
+	}
 	
 	/**
 	 * loc should be 1 if tile is inside, 2 if its in a town, 3 if its outside
@@ -126,6 +130,9 @@ public class Map {
 					generateCluster(selection, _x, _y);
 				}
 			} 
+		}
+		if(_y == 9 && _x == 9) {
+			grid[_y][_x] = new BossRoom();
 		}
 	}
 	
@@ -242,7 +249,6 @@ public class Map {
 			currY = currLoc[0];
 			game.pl("You have to clear all of the dungeons to take on the boss");
 		}
-		game.pl(checkAllDungeonsCleared());
 		return true;
 	}
 	

@@ -53,6 +53,10 @@ public class Tile {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return returns a String value containing all of the Tile's items
+	 */
 	public String printItemList() {
 		String retVal = "\n";
 		for(ItemData item : items) {
@@ -61,6 +65,12 @@ public class Tile {
 		return retVal;
 	}
 	
+	/**
+	 * attempts to move an item from the Tile to the player's inventory
+	 * @param p : the player object
+	 * @param checkItem : the item that is attempted to be moved
+	 * @return returns and Object array containing the a String value and a player object
+	 */
 	public Object[] tryPickup(Player p, String checkItem) {
 		Object[] retVal = {p, "That item does not exist in this tile"};
 		if(checkItem.equalsIgnoreCase("mr.todd") || checkItem.equalsIgnoreCase("Todd_from_NASA")) {

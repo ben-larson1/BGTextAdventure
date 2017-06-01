@@ -21,6 +21,18 @@ public class Town extends Tile { // make pregenerated Towns
 		retVal.add(new ItemData("Mr.Todd"));
 		retVal.add(new ItemData("Todd_from_NASA"));
 		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
+		retVal.add(new ItemData("Todd_from_NASA"));
+		retVal.add(new ItemData("Mr.Todd"));
 		return retVal;
 	}
 }

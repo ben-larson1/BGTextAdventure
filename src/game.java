@@ -12,7 +12,7 @@ public class game {
 	private static Player player;
 	private static Scanner input = new Scanner(System.in);
 	public static boolean endVal = true;
-	public static boolean checkForExit = true;
+	public static boolean checkForExit = false;
 	
 	/**
 	 * this is what runs the game
@@ -41,6 +41,7 @@ public class game {
 		player = new Player(inputName);
 		System.out.println("Hello " + player.getName() + ", welcome to Canadia");//name is a work in progress
 		m.generateInitialMap();
+		m.setTile(9, 9, new BossRoom());
 		player.addToInventory(new ItemData("Map",m));
 		pl(m.getCurrentTile().getText());
 	}
@@ -106,13 +107,16 @@ public class game {
 			
 			break;
 		case "attack":
-			if(cmd.length > 1 ) {
-				tempVal = player.attack(cmd[1], m);
-				m = (Map)tempVal[1];
-				pl(tempVal[0]);
-			} else {
-				pl("Please enter what you wish to attack with");
+			if(m.getCurrentTile().getClass().toString().equalsIgnoreCase("class BossRoom")) {
+				if(cmd.length > 1 ) {
+					tempVal = player.attack(cmd[1], m);
+					m = (Map)tempVal[1];
+					pl(tempVal[0]);
+				} else {
+					pl("Please enter what you wish to attack with");
+				}
 			}
+			
 			
 			break;
 		case "cheat":
@@ -136,7 +140,10 @@ public class game {
 					+ "look\t\t\ttells you the data of the current tile\n"
 					+ "take, pick_up\t\tremoves an item from the current tile and adds it to your inventory\n"
 					+ "inspect\t\t\tprints out all of the data for an imputted item\n"
-					+ "attack\t\t\tattacks the monster, only use if there is a dungeon\n\t\t\tafter this input the item you are attacking with\n";
+					+ "attack\t\t\tattacks the monster, only use if there is a dungeon\n\t\t\tafter this input the item you are attacking with\n"
+					+ "reflect\t\t\tprints your health and amount of Ca$hMoneys\n"
+					+ "interact\t\tlets you access the shops owned by the villagers (who are conveniently named Todd)\n"
+					+ "challenge\t\tstarts the final boss battle. can only be used in the BossRoom.\n\t\t\tonce you use this command, there is no going back\n";
 			pl(pVal);
 			break;
 		case "stupid":
@@ -177,6 +184,7 @@ public class game {
 	 * once this finishes, the game will terminate
 	 */
 	public static void challenge() {
+		pl("You have initiated the challenge");
 		Tile saveTile = m.getCurrentTile();
 		m = new Map(1,1, saveTile);
 		endVal = false;
@@ -186,7 +194,7 @@ public class game {
 	 * this is the loop for when the player is engaged in the Boss battle, when it ends the program ends
 	 */
 	public static void bossBattle() {
-		while(player.getHealth() > 0 && ((BossRoom)m.getCurrentTile()).getBoss().getHealth() > 0) {
+		while(player.getHealth() > 0 && m.getCurrentTile().getDungeon().getMonster().getHealth() > 0) {
 			bossBattleCMD(input.nextLine());
 		}
 	}

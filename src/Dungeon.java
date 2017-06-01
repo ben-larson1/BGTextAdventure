@@ -29,6 +29,8 @@ public class Dungeon extends Structure{
 		case 3:
 			monster = new Monster(150,10);
 			break;
+		case 4:
+			monster = new Monster(200,15);
 		}
 	}
 	
