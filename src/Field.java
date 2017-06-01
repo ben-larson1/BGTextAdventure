@@ -26,6 +26,7 @@ public class Field extends Tile implements Clusterable {
 		retVal.add(new ItemData("mouse"));
 		retVal.add(new ItemData("snake"));
 		retVal.add(new ItemData("shovel"));
+		retVal.add(new ItemData("key"));
 		return retVal;
 	}
 

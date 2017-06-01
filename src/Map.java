@@ -247,6 +247,14 @@ public class Map {
 	}
 	
 	/**
+	 * skips to the BossRoom
+	 */
+	public void skip() {
+		currX = grid[0].length - 1;
+		currY = grid.length - 1;
+	}
+	
+	/**
 	 * checks to see if all dungeons on the map are cleared
 	 * @return boolean
 	 */
